@@ -1,0 +1,119 @@
+body {
+	background-color: #000;
+	color: #FFF;
+	font-family: courier, monospace;
+}
+
+
+.container {
+	width: 100%;
+}
+
+#contentWrapper {
+	overflow: hidden;
+}
+
+#content {
+	width: 106%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#intro {
+	padding-right: 5%;
+	padding-left: 3px;
+	max-height: 500px;
+	font-size: large;
+	border-bottom: 1px solid #999;
+	margin-bottom: 10px;
+}
+#terminalBody {
+	padding-right: 5%;
+	overflow: auto;
+	padding-left: 3px;
+	max-height: 300px;
+	font-size: large;
+}
+
+.cmdln {
+	padding-left: 5px;
+	padding-top: 1px;
+}
+
+.commandLine {
+	padding-left: 3px;
+	padding-top: 7px;
+}
+
+.terminalCommand {
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 20px;
+}
+
+
+.terminalMessage {
+	padding-left: 4px;
+	padding-right: 20px;
+}
+
+table {
+	font-size: large;
+}
+
+td.right {
+	width: 300px;
+}
+
+input[type=text] {
+	width: 100%;
+	background-color: #000;
+	border: none;
+/*	border-bottom: 1px solid #999; */
+	color: #FFF;
+	font-size: large;
+	margin-left: 5px;
+	font-family: courier, monospace;
+	outline: none;
+}
+
+input[type=text]:focus {
+	outline: none;
+}
+
+.user {
+	color: #0F0;	
+}
+
+.command {
+	color: #FFF;
+}
+.keyword {
+	color: #00e676;
+}
+
+.typing p{
+  color: lime;
+  font-family: "Courier";
+  font-size: 20px;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30em;
+  animation: type 3s steps(60, end);
+}
+
+.typing p:nth-child(2){
+  animation: type2 3s steps(60, end);
+}
+
+
+@keyframes type{
+  from { width: 0; }
+}
+
+@keyframes type2{
+  0%{width: 0;}
+  50%{width: 0;}
+  100%{ width: 100; }
+}

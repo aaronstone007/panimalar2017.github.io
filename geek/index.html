@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>terminal@prayudh_17</title>
+	<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="includes/styles.css" type="text/css">
+
+</head>
+<body onload="inputFocus()">
+	<div class="container">
+		<div id="contentWrapper" class="col-xs-10 col-xs-offset-1 col-lg-6 col-lg-offset-3">
+			<div id="content">
+				
+				<div class="typing">
+      				<center>
+      					<p>Prayudh '17'</p>
+      					<p>Panimalar Institute of Technology</p>
+      					<p>Department of CSE</p>
+    				</center>
+    			</div>
+    			
+				<div id="intro">
+					<p>Hey there GEEK, how is it going ?? You've accessed Prayudh '17' terminal</p>
+
+					<noscript>
+						<p class="disclaimer">It seems you're not using JavaScript, and that's cool. I made this website primarily in JS so that I could emulate a terminal environment that accepts commands to display information about myself. Please enable JavaScript to see it. Otherwise, I've got an alternative implementation for non-JS users. Just click here to see it: <a href="#">Non-JS version</a></p>
+					</noscript>
+
+					<p>To get started, please type in the command <span class="keyword">h</span> or <span class="keyword">help</span>, followed by the 'enter' key, to see a list of further available commands.</p>
+				</div>
+				<div id="terminalBody">
+				</div>
+				<div class="commandLine">
+					<table>
+						<tr>
+							<td class="left"><span id="user" class="user">Ran.codes:~ prayudh_17$ </span></td>
+							<td class="right">
+								<input type="text" id="commandLine" class="cmdln" name="command" onkeydown="executeCmd(event)"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="includes/boostrap/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	commandLine.focus();
+    	var user = 'prayudh_17';
+		var spanuser = document.getElementById('user');
+		var commandList = [];
+		var upLimit = 0;
+		var commLine = "";
+		var comm = "";
+		var termBody = "";
+		var message = "";
+		var cmd = "";
+		var siteName = 'root@';
+		var prayudh = 'prayudh_17'
+
+		function inputFocus() {
+			spanuser.innerHTML = siteName + ':~ ' + user + '$ ';
+			document.getElementById('commandLine').focus();
+		}
+
+		function executeCmd(e) {
+			e = e || window.event;
+		    if ((e.which == 13) || (e.keyCode == 13))
+		    {
+				commLine = document.getElementById('commandLine');
+				comm = '<div class="terminalCommand"><span class="user">' + siteName + ':~ ' + prayudh + '$ </span>' + '<span class="command">' + commLine.value + '</span></div>';
+				termBody = document.getElementById('terminalBody');
+				message = "";
+				cmd = commLine.value.split(" ");
+
+				commandList.push(commLine.value);
+
+
+				switch(cmd[0].toUpperCase())
+				{
+					case "H":
+					message = "<div class='terminalMessage'><center>";
+					message += "====<br />HELP<br />====";
+					message += "<p><span class='keyword'>ls</span> (lower case L): See commands for available 'pages'</p>";
+					
+					message += "<p><span class='keyword'>up/down arrows</span>: Cycle through previously entered commands</p>";
+					message += "<p><span class='keyword'>clear</span>: Clear all displayed data from the terminal. Up/Down still cycles through previous commands.</p></center>";
+					message += "</div>";
+					break;
+
+					case "HELP":
+					message = "<div class='terminalMessage'><center>";
+					message += "====<br />HELP<br />====";
+					message += "<p><span class='keyword'>ls</span> (lower case L): See commands for available 'pages'</p>";
+					
+					message += "<p><span class='keyword'>up/down arrows</span>: Cycle through previously entered commands</p>";
+					message += "<p><span class='keyword'>clear</span>: Clear all displayed data from the terminal. Up/Down still cycles through previous commands.</p></center>";
+					message += "</div>";
+					break;
+
+					case "LS":
+					message = "<div class='terminalMessage'><center>";
+					message += "=====<br />PAGES<br />=====";
+					message += "<p><span class='keyword'>clear</span>: Clear Terminal</p>";
+					message += "<p><span class='keyword'>about</span>: About College</p>";
+					message += "<p><span class='keyword'>events</span>: Symposium Events</p>";
+					message += "<p><span class='keyword'>contact</span>: Contact College</p>";
+					message += "<p><span class='keyword'>location</span>: Get College Location</p>";
+					message += "<p><span class='keyword'>rules</span>: Get Rules About the Events</p>";
+					message += "<p><span class='keyword'>register</span>: Register for Events</p>";
+					message += "<p><span class='keyword'>exit</span>: Exit Page</p>";
+					message += "<p><span class='keyword'>home</span>: Home Page</p></center>";
+					message += "</div>";
+					break;
+
+					case "ABOUT":
+					message = "<div class='terminalMessage'>";
+					message += "========<br />ABOUT</br />========";
+					message += "<p>Prayudh , a National level Technical symposium, conducted by the departments of Computer Science Engineering and Information Technology in Panimalar Institute of Technology,Chennai</p>";
+					message += "<p>Panimalar Institute of Technology, a Christian Minority Institution of Technical education functioning under Jai Sakthi Educational Trust is intended for the dissemination of profound knowledge among the ambitious student community in Engineering and Technology. It has established its reputation in not only imparting high quality education but also in emphasizing discipline.</p>";
+					message += "</div>";
+					break;
+
+					case "EVENTS":
+					message = "<div class='terminalMessage'><center>=========<br />EVENTS<br >=========";
+					message += "<ul><li>Paper Presentation on 25-2-2017</li><br>";
+					message += "<li>Quiz on 25-2-2017</li><br></ul></center>";
+					message += "</div>";
+					break;
+
+					case "RULES":
+					message = "<div class='terminalMessage'> <center> =========<br />RULES<br >=========</center>";
+					message += "<p>Paper Presentation</p>";
+					message = "<center>=========<br />RULES<br >=========</center>";
+					message += "<u><p>1. Paper Presentation</p></u>";
+					message += "<center><ul><li> A team should consist of a maximum of 2 members.</li><li> The Paper should be in IEEE format.</li><li> At least one of the authors of the selected paper should acknowledge the receipt of information that their paper has been selected for the final presentation via e-mail on or before  and Feb 2017 and present the paper on  th Feb 2017.</li></ul></center><u><p>2. Quiz</p></u><center><ul><li> A team should consist of a maximum of 2 members.</li></ul><h4 class='keyword'>Round 1: (Prelims)</h4>=======================<br />Number of questions: 30<br>=======================<br />Time Duration: 15 mins<br>=======================<ul><li> The questions will test awareness in the field of CSE &amp; IT.</li><li>15 teams will be selected for the finals.</li></ul><h4 class='keyword'>Round 2: (Tech Connections)</h4>=======================<br />Number of questions: 35<br>=======================<br />Time Duration: 30<br>=======================<br></center><center><ul><li>Winner takes all buddy</li></ul></center>";
+					
+					message += "</div>";
+					break;
+
+					case "CONTACT":
+					message = "<div class='terminalMessage'><center><p>Email: info@pit.ac.in</p>";
+					message += "<p>Phone: 044 2649 1113</p><center>";
+					message += "<p>Co-ordintator ==> Mithilaesh - 9840097425 </p><center>";
+					message += "<p>Co-ordintator ==> Preethi - 8870775112</p><center>";
+					message += "<p>Quiz Co-ordintator ==> Hari Prakash - 7598046021</p><center>";
+					message += "<p>Paper Presentation ==> Priya - 9884774431</p><center>";
+					message += "<p>Registration ==> Srinath - 8754948456</p><center></div>";
+					break;
+
+					case "LOCATION":
+					message = "<div class='terminalMessage'><br>ADDRESS: Panimalar Institute of Technology No.391, Bangalore Trunk Road, Varadharajapuram,Poonamallee,Chennai - 600 123 <br><br> <center> <iframe src=https:/www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7304820768595!2d80.07272671416906!3d13.05281991662411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528a3fa1bbe0b3%3A0x9200e04cc2973a36!2sPanimalar+Institute+of+Technology!5e0!3m2!1sen!2sin!4v1485777744824 width='600'height='450' frameborder='0' style=border:'0'></iframe></center></div>";	
+					break;
+
+					case "CLEAR":
+					message = "";
+					break;
+
+					case "REGISTER":
+					message = "<div class='terminalMessage'>Please wait while this link loads:</div>"; 
+					message += window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSecKYUahEe1pRYlKIrxMkS0kHnyPudQVpQC9KJvoyJrnrNxsw/viewform";
+					break;
+
+					case "EXIT":
+					message = window.location.href = 'about:blank';
+					break;
+
+					case "HOME":
+					message = window.location.href = '../index.html';
+					break;
+
+					
+
+					default:
+					message = "<div class='terminalMessage'>Unrecognised command. For a list of commands, enter <span class='keyword'>h</span> or <span class='keyword'>help</span>.</div>";
+				}
+
+				termBody.innerHTML += comm;
+				if(cmd[0].toUpperCase() == 'CLEAR')
+				{
+					termBody.innerHTML = message;
+				}
+				else
+				{
+					termBody.innerHTML += message;
+				}
+				commLine.value = "";
+
+				termBody.scrollTop = termBody.scrollHeight;
+
+				upLimit = 0;
+			}
+			else if ((e.which == 38) || (e.keyCode == 38))
+		    {
+				commLine.value = "";
+				if(upLimit <= commandList.length -1)
+				{
+					upLimit++;
+					commLine.value = commandList[commandList.length-upLimit];
+				}
+			}
+			else if ((e.which == 40) || (e.keyCode == 40))
+		    {
+				commLine.value = "";
+				if(upLimit >= 1)
+				{
+					commLine.value = commandList[commandList.length-upLimit];
+					upLimit--;
+				}
+			}
+
+		}
+
+	</script>
+</body>
+</html>
